@@ -29,8 +29,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center; /* Horizontally center the content */
-  align-items: center; /* Vertically center the content */
+  justify-content: center;
+  /* Horizontally center the content */
+  align-items: center;
+  /* Vertically center the content */
   height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -300,12 +302,15 @@ p {
 .addpost {
   display: block;
   min-width: 100px;
+  margin: 0 0 0 30px;
 }
+
 .house-container {
   max-width: 600px;
   margin: 5% auto;
   padding: 20px;
-  background-color: transparent; /* Установим прозрачный фон */
+  background-color: transparent;
+  /* Установим прозрачный фон */
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -319,24 +324,24 @@ p {
 
 .image-list {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  grid-gap: 10px; 
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
 }
 
 .house-image {
-  width: 100%; 
-  max-height: 200px; 
-  object-fit: cover; 
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
 }
 
 .house-image-main {
-  grid-column: span 2; 
-  max-height: 300px; 
-  object-fit: cover; 
+  grid-column: span 2;
+  max-height: 300px;
+  object-fit: cover;
 }
 
-.house-description, .house-price {
+.house-description,
+.house-price {
   font-size: 16px;
   margin-bottom: 10px;
 }
-

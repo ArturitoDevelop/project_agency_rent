@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 
-export default function AddPage({ input, allCategory, changeHandler }) {
+export default function AddPage({ input, allCategory, changeHandler, user }) {
     const submitHandler = async (e) => {
         // console.log('click', e.target.files.files);
         e.preventDefault();

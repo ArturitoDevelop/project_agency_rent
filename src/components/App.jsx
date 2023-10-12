@@ -52,7 +52,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
 
-        <Route path="/post/favorites" element={<Favorites posts={favoritePosts} />} />
+        <Route path="/favorites" element={<Favorites favoritePosts={favoritePosts} />} />
         <Route path="/house/:id" element={<HouseDetail house={house} />} />
 
         <Route
