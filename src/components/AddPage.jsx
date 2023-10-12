@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 
 export default function AddPage({ input, allCategory, changeHandler, user }) {
-
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -81,11 +80,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
             <input type="file" value={input.photo} name="photo" accept="image" />
           </div>
 
-          <button
-            style={{ display: 'none' }}
-            //  onClick={handleImageClick}
-            type="submit"
-          >
+          <button style={{ display: 'none' }} type="submit">
             ok
           </button>
         </Form>
