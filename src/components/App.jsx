@@ -23,7 +23,9 @@ export default function App({ allposts, user, myPostId }) {
   };
   return (
     <>
-    <NewNavBar/>
+      <div className='container'>
+        <NewNavBar />
+      </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
