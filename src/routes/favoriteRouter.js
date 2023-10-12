@@ -15,7 +15,6 @@ favoriteRouter.get('/', async (req, res) => {
         }
       ]
     });
-    console.log(data);
     const favoritePosts = data.map(post => post.Post);
     res.render('Layout', { favoritePosts });
   });

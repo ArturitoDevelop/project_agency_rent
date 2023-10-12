@@ -19,12 +19,10 @@ apiPostRouter.delete('/:id', async (req, res) => {
 apiPostRouter.post('/favorite/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const data = await Favorite.create({
       user_id: req.session?.user?.id,
       post_id: id,
     });
-    console.log(data);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);

@@ -299,6 +299,7 @@ p {
 .addpost {
   display: block;
   min-width: 100px;
+  margin: 0 0 0 30px;
 }
 .house-container {
   max-width: 600px;

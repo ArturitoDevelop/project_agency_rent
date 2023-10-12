@@ -27,9 +27,8 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
   const favoriteHandler = async (id) => {
     const data = await axios.post(`/api/post/favorite/${id}`);
     if (data.status === 200) {
-      console.log(data);
+      console.log('УСПЕЕЕЕЕЕЕЕЕЕШНО');
     }
-    console.log(data.status);
   };
 
   const [input, setInput] = useState({
@@ -54,7 +53,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
         <Route path="post/house/:id" element={<HouseDetail house={house} />} />
 
-        <Route path="/post/favorites" element={<Favorites posts={favoritePosts} />} />
+        <Route path="/favorites" element={<Favorites favoritePosts={favoritePosts} />} />
 
         <Route
           path="/post/add"

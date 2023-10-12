@@ -13,7 +13,6 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
     // }
     // formData1.append('file', e.target.photo.files[0]);
 
-    console.log(e.target.photo.files);
 
     const response = await axios.post('/api/post/add', input);
     if (response.status === 200) {
