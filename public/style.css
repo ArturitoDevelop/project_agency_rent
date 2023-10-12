@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin:5% 0 0 0 ;
+  margin: 5% 0 0 0;
 }
 
 .cardone {
@@ -295,6 +295,10 @@ p {
   opacity: 1;
 }
 
+.addpost {
+  display: block;
+  min-width: 100px;
+}
 .house-container {
   max-width: 600px;
   margin: 5% auto;

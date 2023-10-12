@@ -29,25 +29,28 @@ export default function OneCard({ post, handlerOnDelete, user }) {
           <Card.Text>{post.description}</Card.Text>
           <Card.Text>{post.price}</Card.Text>
 
-          <div className="d-flex justify-content-between">
-            {user?.isAdmin === true && (
-              <>
-                <Button onClick={() => handlerOnDelete(post.id)} variant="danger">
-                  Delete
-                </Button>
-                <Button variant="warning">
-                  <a target="_blank" className="bt" href={`/post/${post.id}`} rel="noreferrer">
-                    Edit
-                  </a>
-                </Button>
-              </>
-            )}
-            <button className='btn' type="submit">
-              <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
-            </button>
-          </div>
-        </Card.Body>
-      </Card>
-    </Link>
+        <div className="d-flex justify-content-between">
+          {user?.isAdmin === true && (
+            <>
+              <button
+                type="submit"
+                className="btn"
+                onClick={() => handlerOnDelete(post.id)}
+              >
+                <img className="iconfav" src="/img/trash.png" alt="" />
+              </button>
+              <button className="btn" type="submit">
+                <a target="_blank" className="bt" href={`/post/${post.id}`} rel="noreferrer">
+                  <img className="iconfav" src="/img/edit.png" alt="" />
+                </a>
+              </button>
+            </>
+          )}
+          <button className="btn" type="submit">
+            <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
+          </button>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }

@@ -5,7 +5,7 @@ import store from 'session-file-store';
 import path from 'path';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
-import resLocals from './middlewares/resLocals';
+import resLocals, { apiProtectMiddleWare } from './middlewares/resLocals';
 import editAddRenderRouter from './routes/editAddRenderRouter';
 import apiPostRouter from './routes/apiPostRouter';
 import authPageRouter from './routes/authPageRouter';
@@ -44,7 +44,7 @@ app.use(session(sessionConfig));
 app.use(resLocals);
 
 app.use('/', indexRouter);
-app.use('/api/post', apiPostRouter);
+app.use('/api/post', apiProtectMiddleWare, apiPostRouter);
 app.use('/post', editAddRenderRouter);
 
 app.use('/authPage', authPageRouter);
