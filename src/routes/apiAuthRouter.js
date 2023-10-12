@@ -52,6 +52,7 @@ apiAuthRouter.post('/signin', signUpUserMiddleware, async (req, res) => {
     name: user.name,
     email: user.email,
     id: user.id,
+    isAdmin: user.isAdmin,
   };
 
   res.sendStatus(200);

@@ -6,10 +6,12 @@ import SiginPage from './SigninPage';
 import useUser from '../customHooks/useUser';
 import Home from './Home';
 import Footer from './Footer';
+import AddPage from './AddPage';
+import EditPage from './EditPage';
 import NewNavBar from './UI/NewNavBar';
+import HouseDetail from './HouseDetail';
 import Favorites from './Favorites';
-
-export default function App({ allposts, user, favoritePosts }) {
+export default function App({ allposts, user, house, myPostId, allCategory, favoritePosts }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
   const [posts, setPosts] = useState(allposts);
@@ -27,6 +29,16 @@ export default function App({ allposts, user, favoritePosts }) {
       console.log(data);
     }
     console.log(data.status);
+  const [input, setInput] = useState({
+    cat_id: '',
+    title: '',
+    description: '',
+    price: '',
+    photo: '',
+  });
+
+  const changeHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   return (
@@ -37,8 +49,33 @@ export default function App({ allposts, user, favoritePosts }) {
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-        <Route path="/favorites" element={<Favorites posts={favoritePosts} />} />
 
+        <Route path="/favorites" element={<Favorites posts={favoritePosts} />} />
+        <Route path="/house/:id" element={<HouseDetail house={house} />} />
+        <Route
+          path="/post/add"
+          element={
+            <AddPage
+              input={input}
+              user={user}
+              setInput={setInput}
+              changeHandler={changeHandler}
+              allCategory={allCategory}
+            />
+          }
+        />
+        <Route
+          path="/post/:id"
+          element={
+            <EditPage
+              user={user}
+              input={input}
+              changeHandler={changeHandler}
+              allCategory={allCategory}
+              myPostId={myPostId}
+            />
+          }
+        />
         <Route
           path="/"
           element={

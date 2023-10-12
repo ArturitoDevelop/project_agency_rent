@@ -6,6 +6,7 @@ export default function Home({ posts, handlerOnDelete, user, favoriteHandler }) 
     <div className="container" >
       {posts?.map((el) => (
         <OneCard favoriteHandler={favoriteHandler} user={user} handlerOnDelete={handlerOnDelete} post={el} />
+
       ))}
     </div>
   );
