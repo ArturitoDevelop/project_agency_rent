@@ -4,7 +4,6 @@ import axios from 'axios';
 import Auth from './Auth';
 import SiginPage from './SigninPage';
 import useUser from '../customHooks/useUser';
-import NavBar from './NavBar';
 import Home from './Home';
 import Footer from './Footer';
 import NewNavBar from './UI/NewNavBar';
@@ -23,14 +22,10 @@ export default function App({ allposts, user }) {
   return (
     <>
     <NewNavBar/>
-      <NavBar />
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-
-        <Route
-          path="/"
-          element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
+        <Route path="/" element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
         />
       </Routes>
       <Footer />
