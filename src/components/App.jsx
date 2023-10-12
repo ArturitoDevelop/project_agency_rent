@@ -7,8 +7,9 @@ import useUser from '../customHooks/useUser';
 import Home from './Home';
 import Footer from './Footer';
 import NewNavBar from './UI/NewNavBar';
+import HouseDetail from './HouseDetail';
 
-export default function App({ allposts, user }) {
+export default function App({ allposts, user, house }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
   const [posts, setPosts] = useState(allposts);
@@ -27,7 +28,10 @@ export default function App({ allposts, user }) {
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-
+        <Route
+          path="/house/:id"
+          element={<HouseDetail house={house} />}
+        />
         <Route
           path="/"
           element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
