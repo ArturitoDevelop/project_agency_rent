@@ -29,10 +29,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  /* Horizontally center the content */
-  align-items: center;
-  /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
   height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -227,20 +225,15 @@ p {
   text-align: center;
 }
 
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 .navMenu {
-
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 10%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-
 }
 
 .navMenu a {

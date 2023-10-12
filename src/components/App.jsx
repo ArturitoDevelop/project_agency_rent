@@ -6,9 +6,11 @@ import SiginPage from './SigninPage';
 import useUser from '../customHooks/useUser';
 import Home from './Home';
 import Footer from './Footer';
+import AddPage from './AddPage';
+import EditPage from './EditPage';
 import NewNavBar from './UI/NewNavBar';
 
-export default function App({ allposts, user }) {
+export default function App({ allposts, user, myPostId, allCategory }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
   const [posts, setPosts] = useState(allposts);
@@ -19,15 +21,54 @@ export default function App({ allposts, user }) {
       setPosts((prev) => prev.filter((el) => el.id !== id));
     }
   };
+
+  //= ========================
+
+  const [input, setInput] = useState({
+    cat_id: "",
+    title: '',
+    description: '',
+    price: '',
+    photo: '',
+  });
+
+  const changeHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
-      <div className='container'>
+      <div className="container">
         <NewNavBar />
       </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-        <Route path="/" element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
+        <Route
+          path="/post/add"
+          element={
+            <AddPage
+              input={input}
+              setInput={setInput}
+              changeHandler={changeHandler}
+              allCategory={allCategory}
+            />
+          }
+        />
+        <Route
+          path="/post/:id"
+          element={
+            <EditPage
+              input={input}
+              changeHandler={changeHandler}
+              allCategory={allCategory}
+              myPostId={myPostId}
+            />
+          }
+        />
+        <Route
+          path="/"
+          element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
         />
       </Routes>
       <Footer />
