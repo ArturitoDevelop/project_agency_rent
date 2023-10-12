@@ -13,6 +13,8 @@ import apiPostRouter from './routes/apiPostRouter';
 import authPageRouter from './routes/authPageRouter';
 import loginRouter from './routes/loginRouter';
 import apiAuthRouter from './routes/apiAuthRouter';
+import favoriteRouter from './routes/favoriteRouter';
+
 
 require('dotenv').config();
 
@@ -51,5 +53,6 @@ app.use('/post', editAddRenderRouter);
 app.use('/authPage', authPageRouter)
 app.use('/loginPage', loginRouter)
 app.use('/api/auth', apiAuthRouter);
+app.use('/favorites', favoriteRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
