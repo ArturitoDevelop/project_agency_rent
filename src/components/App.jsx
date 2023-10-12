@@ -9,6 +9,7 @@ import Home from './Home';
 import Footer from './Footer';
 import AddPage from './AddPage';
 import EditPage from './EditPage';
+import NewNavBar from './UI/NewNavBar';
 
 export default function App({ allposts, user, myPostId }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
@@ -23,6 +24,7 @@ export default function App({ allposts, user, myPostId }) {
   };
   return (
     <>
+    <NewNavBar/>
       <NavBar />
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
