@@ -2,39 +2,43 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 
-export default function EditPage({ myPostId }) {
-  const [input, setInput] = useState({
-    title: myPostId.title,
-    description: myPostId.description,
-    price: myPostId.price,
-  });
-
-  const updateHandler = async (event) => {
-    event.preventDefault();
-    const response = await axios.patch(`/api/post/update/${myPostId.id}`, {
-      title: input.title,
-      description: input.description,
-      price: input.price,
-    });
-    if (response.ok) {
+export default function EditPage({ myPostId, changeHandler, allCategory }) {
+  const updateHandler = async (e) => {
+    e.preventDefault();
+    const response = await axios.patch(
+      `/api/post/update/${myPostId.id}`,
+      Object.fromEntries(new FormData(e.target)),
+    );
+    if (response.status === 200) {
       window.location = '/';
     }
   };
 
-  const changeHandler = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
-
   return (
-    <Form onSubmit={updateHandler}>
+    <Form type="submit" onSubmit={updateHandler}>
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Недвижимость</Form.Label>
+        <Form.Select
+          className="input_style"
+          name="cat_id"
+          value={myPostId.cat_id}
+          placeholder="Тип объекта"
+          aria-label="Default select example"
+        >
+          <option>Недвижимость</option>
+          {allCategory.map((el) => (
+            <option value={el.id} key={el.id}>
+              {el.title}
+            </option>
+          ))}
+        </Form.Select>
+
+        <Form.Group as={Col} controlId="formGridPassword">
+          <Form.Label>Заголовок</Form.Label>
           <Form.Control
             name="title"
             type="text"
-            placeholder="Тип объекта"
-            onChange={changeHandler}
+            placeholder="Описание объекта"
+            defaultValue={myPostId.title}
           />
         </Form.Group>
 
@@ -44,18 +48,23 @@ export default function EditPage({ myPostId }) {
             name="description"
             type="text"
             placeholder="Описание объекта"
-            onChange={changeHandler}
+            defaultValue={myPostId.description}
           />
         </Form.Group>
       </Row>
 
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Цена</Form.Label>
-        <Form.Control name="price" placeholder="Цена" onChange={changeHandler} />
+        <Form.Control
+          onChange={changeHandler}
+          name="price"
+          placeholder="Цена"
+          defaultValue={myPostId.price}
+        />
       </Form.Group>
 
       <div className="downloadphoto">
-        <input type="file" defaultValue={input.photo} name="photo" accept="image" />
+        <input type="file" defaultValue={myPostId.photo} name="photo" accept="image" />
       </div>
 
       <button

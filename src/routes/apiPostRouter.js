@@ -18,12 +18,15 @@ apiPostRouter.delete('/:id', async (req, res) => {
 });
 
 apiPostRouter.post('/add', async (req, res) => {
+  console.log(req.body);
+
   try {
-    const { title, description, price } = req.body;
+    const { title, description, price, cat_id } = req.body;
     const data = await Post.create({
       title,
       description,
       price,
+      cat_id,
     });
     res.status(200).json(data);
   } catch (error) {
@@ -33,7 +36,6 @@ apiPostRouter.post('/add', async (req, res) => {
 
 // update post
 apiPostRouter.patch('/update/:id', async (req, res) => {
-  
   try {
     const updatePost = await Post.update(
       {
@@ -50,6 +52,5 @@ apiPostRouter.patch('/update/:id', async (req, res) => {
     console.error('Ошибка при обновлении поста:', error);
   }
 });
-
 
 export default apiPostRouter;
