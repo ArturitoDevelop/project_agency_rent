@@ -10,8 +10,8 @@ export default function OneCard({ post, handlerOnDelete, user }) {
   };
 
   return (
-    <Link to={`/house/${post.id}`} reloadDocument className="cardone-link"> 
-      <Card className="cardone" style={{ width: '18rem', pointerEvents: 'auto' }}> {/* Добавьте pointer-events: auto */}
+    <Card className="cardone" style={{ width: '18rem' }}>
+      <Link to={`/house/${post.id}`} reloadDocument className="cardone-link">
         <Carousel activeIndex={index} onSelect={handleSelect}>
           {post.Pictures.map((picture) => (
             <Carousel.Item key={picture.id}>
@@ -24,19 +24,16 @@ export default function OneCard({ post, handlerOnDelete, user }) {
             </Carousel.Item>
           ))}
         </Carousel>
-        <Card.Body style={{ pointerEvents: 'none' }}> {/* Добавьте pointer-events: none */}
-          <Card.Title>{post.title}</Card.Title>
-          <Card.Text>{post.description}</Card.Text>
-          <Card.Text>{post.price}</Card.Text>
+      </Link>
+      <Card.Body>
+        <Card.Title>{post.title}</Card.Title>
+        <Card.Text>{post.description}</Card.Text>
+        <Card.Text>{post.price}</Card.Text>
 
         <div className="d-flex justify-content-between">
           {user?.isAdmin === true && (
             <>
-              <button
-                type="submit"
-                className="btn"
-                onClick={() => handlerOnDelete(post.id)}
-              >
+              <button type="submit" className="btn" onClick={() => handlerOnDelete(post.id)}>
                 <img className="iconfav" src="/img/trash.png" alt="" />
               </button>
               <button className="btn" type="submit">
