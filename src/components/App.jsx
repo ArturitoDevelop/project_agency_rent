@@ -7,6 +7,7 @@ import useUser from '../customHooks/useUser';
 import NavBar from './NavBar';
 import Home from './Home';
 import Footer from './Footer';
+import NewNavBar from './UI/NewNavBar';
 
 export default function App({ allposts, user }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
@@ -21,6 +22,7 @@ export default function App({ allposts, user }) {
   };
   return (
     <>
+    <NewNavBar/>
       <NavBar />
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
