@@ -9,8 +9,11 @@ import Footer from './Footer';
 import AddPage from './AddPage';
 import EditPage from './EditPage';
 import NewNavBar from './UI/NewNavBar';
+import HouseDetail from './HouseDetail';
 
-export default function App({ allposts, user, myPostId, allCategory }) {
+
+export default function App({ allposts, user, house, myPostId, allCategory }) {
+
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
   const [posts, setPosts] = useState(allposts);
@@ -45,6 +48,10 @@ export default function App({ allposts, user, myPostId, allCategory }) {
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
         <Route
+
+          path="/house/:id"
+          element={<HouseDetail house={house} />}
+<Route
           path="/post/add"
           element={
             <AddPage
@@ -65,6 +72,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
               myPostId={myPostId}
             />
           }
+
         />
         <Route
           path="/"
