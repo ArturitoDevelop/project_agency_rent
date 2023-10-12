@@ -1,5 +1,8 @@
 import express from 'express';
+import fs from 'fs/promises';
+import sharp from 'sharp';
 import { Post, Picture } from '../../db/models';
+import upload from '../middlewares/multerLoad';
 
 const apiPostRouter = express.Router();
 
@@ -17,22 +20,43 @@ apiPostRouter.delete('/:id', async (req, res) => {
   }
 });
 
-apiPostRouter.post('/add', async (req, res) => {
-  console.log(req.body);
-
+apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
+  console.log(req.files, "-----------");
   try {
     const { title, description, price, cat_id } = req.body;
+    if (!req.files || req.files.length === 0) {
+      return res.status(401).json({ message: 'Files not found' });
+    }
+
+    const images = [];
+
+    for (const file of req.files) {
+      const name = `${Date.now()}.webp`;
+      const outputBuffer = await sharp(file.buffer).webp().toBuffer();
+      await fs.writeFile(`./public/img/${name}`, outputBuffer);
+
+      images.push({ img: name });
+    }
+
     const data = await Post.create({
+      cat_id,
       title,
       description,
       price,
-      cat_id,
     });
+
+    for (const image of images) {
+      image.post_id = data.id;
+    }
+
+    await Picture.bulkCreate(images);
+
     res.status(200).json(data);
   } catch (error) {
-    console.error('Ошибка при добавлении поста:', error);
+    console.error("Ошибка при добавлении поста:", error);
   }
 });
+
 
 // update post
 apiPostRouter.patch('/update/:id', async (req, res) => {

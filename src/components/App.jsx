@@ -25,7 +25,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
   //= ========================
 
   const [input, setInput] = useState({
-    cat_id: "",
+    cat_id: '',
     title: '',
     description: '',
     price: '',

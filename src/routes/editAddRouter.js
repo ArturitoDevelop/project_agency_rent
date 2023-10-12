@@ -4,10 +4,12 @@ import sharp from 'sharp'
 import { Post } from '../../db/models'
 import upload from '../middlewares/multerLoad';
 
+
 const editAddRouter = express.Router();
 
 // add post
 editAddRouter.post('/add', upload.single('file'), async (req, res) => {
+
     try {
         const { title, description, price } = req.body;
         if (!req.file) {

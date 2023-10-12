@@ -16,7 +16,7 @@ export default function OneCard({ post, handlerOnDelete, user }) {
             <Card.Img
               style={{ height: '200px', objectFit: 'cover' }}
               variant="top"
-              src={picture.img}
+              src={`/img/${picture.img}`}
             />
             <Carousel.Caption />
           </Carousel.Item>
