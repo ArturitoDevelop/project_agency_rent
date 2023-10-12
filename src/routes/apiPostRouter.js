@@ -18,17 +18,17 @@ apiPostRouter.delete('/:id', async (req, res) => {
 });
 
 apiPostRouter.post('/add', async (req, res) => {
-  console.log(req.body);
-
   try {
-    const { title, description, price, cat_id } = req.body;
-    const data = await Post.create({
-      title,
-      description,
-      price,
-      cat_id,
-    });
-    res.status(200).json(data);
+    if (res.session.user.isAdmin === true) {
+      const { title, description, price, cat_id } = req.body;
+      const data = await Post.create({
+        title,
+        description,
+        price,
+        cat_id,
+      });
+      res.status(200).json(data);
+    }
   } catch (error) {
     console.error('Ошибка при добавлении поста:', error);
   }
@@ -37,17 +37,19 @@ apiPostRouter.post('/add', async (req, res) => {
 // update post
 apiPostRouter.patch('/update/:id', async (req, res) => {
   try {
-    const updatePost = await Post.update(
-      {
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-      },
-      {
-        where: { id: req.params.id },
-      },
-    );
-    res.status(200).json(updatePost);
+    if (res.session.user.isAdmin === true) {
+      const updatePost = await Post.update(
+        {
+          title: req.body.title,
+          description: req.body.description,
+          price: req.body.price,
+        },
+        {
+          where: { id: req.params.id },
+        },
+      );
+      res.status(200).json(updatePost);
+    }
   } catch (error) {
     console.error('Ошибка при обновлении поста:', error);
   }

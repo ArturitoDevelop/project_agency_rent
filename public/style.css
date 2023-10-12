@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin:5% 0 0 0 ;
+  margin: 5% 0 0 0;
 }
 
 .cardone {
@@ -293,4 +293,9 @@ p {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   opacity: 1;
+}
+
+.addpost {
+  display: block;
+  min-width: 100px;
 }

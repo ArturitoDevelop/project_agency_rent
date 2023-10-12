@@ -25,7 +25,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
   //= ========================
 
   const [input, setInput] = useState({
-    cat_id: "",
+    cat_id: '',
     title: '',
     description: '',
     price: '',
@@ -39,7 +39,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
   return (
     <>
       <div className="container">
-        <NewNavBar />
+        <NewNavBar user={user} />
       </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
@@ -49,6 +49,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
           element={
             <AddPage
               input={input}
+              user={user}
               setInput={setInput}
               changeHandler={changeHandler}
               allCategory={allCategory}
@@ -59,6 +60,7 @@ export default function App({ allposts, user, myPostId, allCategory }) {
           path="/post/:id"
           element={
             <EditPage
+              user={user}
               input={input}
               changeHandler={changeHandler}
               allCategory={allCategory}
