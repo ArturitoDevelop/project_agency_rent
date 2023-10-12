@@ -7,6 +7,7 @@ import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 import apiRouter from './routes/apiRouter';
 import resLocals from './middlewares/resLocals';
+import apiPostRouter from './routes/apiPostRouter';
 
 require('dotenv').config();
 
@@ -38,6 +39,7 @@ app.use(session(sessionConfig));
 app.use(resLocals);
 
 app.use('/', indexRouter);
+app.use('/api/post',  apiPostRouter);
 app.use('/api', apiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
