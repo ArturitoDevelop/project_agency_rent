@@ -40,6 +40,9 @@ export default function OneCard({ post, handlerOnDelete, user }) {
               </Button>
             </>
           )}
+          <button className='btn' type="submit">
+            <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
+          </button>
         </div>
       </Card.Body>
     </Card>

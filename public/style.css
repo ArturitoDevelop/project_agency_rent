@@ -7,3 +7,12 @@
   margin: 10px;
 }
 
+.iconfav {
+  width: 30px;
+  height: 30px;
+  background-color: none;
+}
+
+.btn {
+  text-decoration: none;
+}
