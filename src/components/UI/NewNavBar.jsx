@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function NewNavBar({ currentUser, logoutHandler }) {
   return (
     <nav className="navMenu">
@@ -19,7 +18,6 @@ export default function NewNavBar({ currentUser, logoutHandler }) {
           <a href="/loginPage">Login</a>
         </>
       )}
-
       <div className="dot" />
     </nav>
   );

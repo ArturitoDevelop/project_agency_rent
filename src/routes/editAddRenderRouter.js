@@ -15,4 +15,6 @@ editAddRenderRouter.get('/:id', async (req, res) => {
   res.render('Layout', { myPostId, allCategory });
 });
 
+
+
 export default editAddRenderRouter;

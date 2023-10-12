@@ -11,6 +11,7 @@ import EditPage from './EditPage';
 import NewNavBar from './UI/NewNavBar';
 import HouseDetail from './HouseDetail';
 import Favorites from './Favorites';
+
 export default function App({ allposts, user, house, myPostId, allCategory, favoritePosts }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
@@ -28,7 +29,8 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
     if (data.status === 200) {
       console.log(data);
     }
-    console.log(data.status);
+    console.log(data.status);}
+
   const [input, setInput] = useState({
     cat_id: '',
     title: '',
@@ -50,8 +52,9 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
 
-        <Route path="/favorites" element={<Favorites posts={favoritePosts} />} />
+        <Route path="/post/favorites" element={<Favorites posts={favoritePosts} />} />
         <Route path="/house/:id" element={<HouseDetail house={house} />} />
+
         <Route
           path="/post/add"
           element={

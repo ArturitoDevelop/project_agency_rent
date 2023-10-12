@@ -1,6 +1,7 @@
+
+
 import express from 'express';
-import { Post, Picture } from '../../db/models';
-import {Favorite} from '../../db/models';
+import { Post,Favorite } from '../../db/models';
 
 const apiPostRouter = express.Router();
 
@@ -20,15 +21,17 @@ apiPostRouter.delete('/:id', async (req, res) => {
 apiPostRouter.post('/favorite/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id)
-     const data = await Favorite.create({
+    console.log(id);
+    const data = await Favorite.create({
       user_id: req.session?.user?.id,
       post_id: id,
-    })
-    console.log(data)
+    });
+    console.log(data);
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
+  }
+});
 
 apiPostRouter.post('/add', async (req, res) => {
   try {
@@ -67,5 +70,7 @@ apiPostRouter.patch('/update/:id', async (req, res) => {
     console.error('Ошибка при обновлении поста:', error);
   }
 });
+
+
 
 export default apiPostRouter;
