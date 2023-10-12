@@ -58,7 +58,9 @@ export default function AddPage() {
 
             </div>
 
-            <button style={{ display: 'none' }} onClick={handleImageClick} type='submit'>ok</button>
+            <button style={{ display: 'none' }}
+            //  onClick={handleImageClick} 
+             type='submit'>ok</button>
 
         </Form>
     )
