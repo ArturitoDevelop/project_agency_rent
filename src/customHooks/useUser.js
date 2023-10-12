@@ -24,8 +24,8 @@ export default function useUser(user) {
     axios.get('/api/auth/logout').then((data) => {
       if (data.status === 200) {
         setCurrentUser(null);
-        // window.location = '/';
       }
+      window.location = '/';
     });
   };
 

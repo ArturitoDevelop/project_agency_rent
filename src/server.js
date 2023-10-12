@@ -6,17 +6,15 @@ import sessionFileStore from 'session-file-store';
 import jsxRender from './utils/jsxRender';
 import indexRouter from './routes/indexRouter';
 
-import apiRouter from './routes/apiRouter';
-import editAddRouter from './routes/editAddRouter';
-import resLocals, { apiProtectMiddleWare } from './middlewares/resLocals';
+
 import editAddRenderRouter from './routes/editAddRenderRouter';
 import apiPostRouter from './routes/apiPostRouter';
 import authPageRouter from './routes/authPageRouter';
 import loginRouter from './routes/loginRouter';
 import apiAuthRouter from './routes/apiAuthRouter';
 import favoriteRouter from './routes/favoriteRouter';
-import { signInUserMiddleware } from './middlewares/authMiddlewares';
-import houseRoutes from './routes/houseRoutes';
+import { apiProtectMiddleWare } from './middlewares/authMiddlewares';
+
 
 
 require('dotenv').config();
@@ -57,21 +55,15 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
+
 app.use('/', indexRouter);
-app.use('/api/post', apiPostRouter);
-app.use('/api', apiRouter);
-app.use('/api/post', editAddRouter);
-app.use('/post', editAddRenderRouter);
-app.use('/authPage', authPageRouter);
-app.use('/loginPage', loginRouter);
-app.use('/api/auth', apiAuthRouter);
-app.use('/favorites', favoriteRouter);
 app.use('/api/post', apiProtectMiddleWare, apiPostRouter);
 app.use('/post', editAddRenderRouter);
+app.use('/favorites', favoriteRouter);
 
 app.use('/authPage', authPageRouter);
 app.use('/loginPage', loginRouter);
 app.use('/api/auth', apiAuthRouter);
-app.use('/house', houseRoutes);
-
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
