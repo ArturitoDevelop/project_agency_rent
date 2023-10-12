@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../../db/models';
+import { signUpUserMiddleware } from '../middlewares/authMiddlewares';
 
 const apiAuthRouter = Router();
 
-apiAuthRouter.post('/signup', async (req, res) => {
+apiAuthRouter.post('/signup', signUpUserMiddleware, async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
     res.statusCode(400).json({ message: 'all field required' });
@@ -25,12 +26,11 @@ apiAuthRouter.post('/signup', async (req, res) => {
     email: user.email,
     id: user.id,
     isAdmin: user.isAdmin,
-  
   };
   res.sendStatus(200);
 });
 
-apiAuthRouter.post('/signin', async (req, res) => {
+apiAuthRouter.post('/signin', signUpUserMiddleware, async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(400).json({ message: 'all field required' });
@@ -43,7 +43,7 @@ apiAuthRouter.post('/signin', async (req, res) => {
     },
   });
 
-  if (!user || !await bcrypt.compare(password, user.password)) {
+  if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(400).json({ message: 'user not found' });
     return;
   }
@@ -58,8 +58,9 @@ apiAuthRouter.post('/signin', async (req, res) => {
 });
 
 apiAuthRouter.get('/logout', (req, res) => {
-  req.session.destroy();
-  res.clearCookie('test');
+  console.log('--------logout');
+  req.session.destroy()
+  res.clearCookie('user_sid')
   res.sendStatus(200);
 });
 

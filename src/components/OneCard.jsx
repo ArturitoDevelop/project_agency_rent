@@ -40,7 +40,7 @@ export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }
               </Button>
             </>
           )}
-          <button className="btn"type='button' on={() => favoriteHandler(post.id)}>
+          <button className="btn"type='button' onClick={() => favoriteHandler(post.id)}>
             <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
           </button>
         </div>

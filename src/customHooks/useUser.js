@@ -9,7 +9,8 @@ export default function useUser(user) {
     const userData = Object.fromEntries(new FormData(e.target));
     if (!userData.name || !userData.password || !userData.email) return;
 
-    axios.post('/api/auth/signup', userData)
+    axios
+      .post('/api/auth/signup', userData)
       .then(() => {
         window.location = '/';
         e.target.reset();
@@ -17,11 +18,15 @@ export default function useUser(user) {
       .catch((err) => console.log(err));
   };
 
-  const logoutHandler = () => {
-    axios.get('/api/auth/logout')
-      .then(() => {
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    console.log('logout');
+    axios.get('/api/auth/logout').then((data) => {
+      if (data.status === 200) {
         setCurrentUser(null);
-      });
+        // window.location = '/';
+      }
+    });
   };
 
   const signInHandler = (e) => {
@@ -29,7 +34,8 @@ export default function useUser(user) {
     const userData = Object.fromEntries(new FormData(e.target));
     if (!userData.password || !userData.email) return;
 
-    axios.post('/api/auth/signin', userData)
+    axios
+      .post('/api/auth/signin', userData)
       .then(() => {
         window.location = '/';
         e.target.reset();

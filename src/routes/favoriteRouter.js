@@ -4,9 +4,9 @@ import { Post, Picture, Favorite } from '../../db/models';
 const favoriteRouter = express.Router();
 
 favoriteRouter.get('/', async (req, res) => {
-    const favoritePosts = await Favorite.findAll({
+    const data = await Favorite.findAll({
       where: {
-        user_id: req.user.id
+        user_id: req.session.user.id
       },
       include: [
         {
@@ -15,6 +15,8 @@ favoriteRouter.get('/', async (req, res) => {
         }
       ]
     });
+    console.log(data);
+    const favoritePosts = data.map(post => post.Post);
     res.render('Layout', { favoritePosts });
   });
   

@@ -32,12 +32,12 @@ export default function App({ allposts, user, favoritePosts }) {
   return (
     <>
       <div className="container">
-        <NewNavBar />
+        <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler}  />
       </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-        <Route path="//favorites" element={<Favorites posts={favoritePosts} />} />
+        <Route path="/favorites" element={<Favorites posts={favoritePosts} />} />
 
         <Route
           path="/"
