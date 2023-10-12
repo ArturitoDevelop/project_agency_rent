@@ -45,7 +45,7 @@ export default function App({ allposts, user, house, myPostId, allCategory }) {
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
-        <Route path="/house/:id" element={<HouseDetail house={house} />} />
+        <Route path="post/house/:id" element={<HouseDetail house={house} />} />
         <Route
           path="/post/add"
           element={

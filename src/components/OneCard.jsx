@@ -11,7 +11,7 @@ export default function OneCard({ post, handlerOnDelete, user }) {
 
   return (
     <Card className="cardone" style={{ width: '18rem' }}>
-      <Link to={`/house/${post.id}`} reloadDocument className="cardone-link">
+      <Link to={`/post/house/${post.id}`} reloadDocument className="cardone-link">
         <Carousel activeIndex={index} onSelect={handleSelect}>
           {post.Pictures.map((picture) => (
             <Carousel.Item key={picture.id}>

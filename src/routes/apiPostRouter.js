@@ -1,5 +1,5 @@
 import express from 'express';
-import { Post, Picture } from '../../db/models';
+import { Post } from '../../db/models';
 
 const apiPostRouter = express.Router();
 
