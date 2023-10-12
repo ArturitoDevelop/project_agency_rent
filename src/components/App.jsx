@@ -50,8 +50,8 @@ export default function App({ allposts, user, house, myPostId, allCategory }) {
         <Route
 
           path="/house/:id"
-          element={<HouseDetail house={house} />}
-<Route
+          element={<HouseDetail house={house} />} />
+        <Route
           path="/post/add"
           element={
             <AddPage
