@@ -1,5 +1,3 @@
-
-
 import express from 'express';
 import fs from 'fs/promises';
 import sharp from 'sharp';
@@ -92,7 +90,5 @@ apiPostRouter.patch('/update/:id', async (req, res) => {
     console.error('Ошибка при обновлении поста:', error);
   }
 });
-
-
 
 export default apiPostRouter;

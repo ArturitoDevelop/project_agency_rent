@@ -20,7 +20,6 @@ export default function useUser(user) {
 
   const logoutHandler = (e) => {
     e.preventDefault();
-    console.log('logout');
     axios.get('/api/auth/logout').then((data) => {
       if (data.status === 200) {
         setCurrentUser(null);

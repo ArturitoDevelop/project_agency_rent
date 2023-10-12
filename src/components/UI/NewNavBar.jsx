@@ -11,7 +11,6 @@ export default function NewNavBar({ currentUser, logoutHandler }) {
           </a>
           <a href="/favorites">Favorites</a>
           <a className='addpost' href="/post/add">Add Post</a>
-
         </>
       ) : (
         <>

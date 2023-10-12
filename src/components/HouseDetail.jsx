@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 function HouseDetail({ house }) {
-    console.log(house)
   if (!house) {
     return <div>Дом не найден</div>;
   }

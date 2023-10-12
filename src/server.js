@@ -51,7 +51,6 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
-  console.log(req.session);
   next();
 });
 
@@ -66,4 +65,5 @@ app.use('/favorites', favoriteRouter);
 app.use('/authPage', authPageRouter);
 app.use('/loginPage', loginRouter);
 app.use('/api/auth', apiAuthRouter);
+
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
