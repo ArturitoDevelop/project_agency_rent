@@ -29,7 +29,6 @@ export default function AddPage() {
         
     }
 
-
     return (
         <Form onSubmit={submitHandler}>
             <Row className="mb-3">
