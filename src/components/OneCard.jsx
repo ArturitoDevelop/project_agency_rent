@@ -30,17 +30,21 @@ export default function OneCard({ post, handlerOnDelete, user }) {
         <div className="d-flex justify-content-between">
           {user?.isAdmin === true && (
             <>
-              <Button onClick={() => handlerOnDelete(post.id)} variant="danger">
-                Delete
-              </Button>
-              <Button variant="warning">
+              <button
+                type="submit"
+                className="btn"
+                onClick={() => handlerOnDelete(post.id)}
+              >
+                <img className="iconfav" src="/img/trash.png" alt="" />
+              </button>
+              <button className="btn" type="submit">
                 <a target="_blank" className="bt" href={`/post/${post.id}`} rel="noreferrer">
-                  Edit
+                  <img className="iconfav" src="/img/edit.png" alt="" />
                 </a>
-              </Button>
+              </button>
             </>
           )}
-          <button className='btn' type="submit">
+          <button className="btn" type="submit">
             <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
           </button>
         </div>
