@@ -6,10 +6,12 @@ export default function NewNavBar({ currentUser, logoutHandler }) {
       {currentUser ? (
         <>
           <a href="/">Home</a>
-          <a href='/' onClick={(e)=>logoutHandler(e)}>
+          <a href='/' onClick={(e) => logoutHandler(e)}>
             Logout
           </a>
           <a href="/favorites">Favorites</a>
+          <a className='addpost' href="/post/add">Add Post</a>
+
         </>
       ) : (
         <>

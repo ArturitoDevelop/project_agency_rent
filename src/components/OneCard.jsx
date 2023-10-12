@@ -11,20 +11,19 @@ export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }
 
   return (
     <Card className="cardone" style={{ width: '18rem' }}>
-      <Link to={`/house/${post.id}`} reloadDocument className="cardone-link">
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-          {post.Pictures.map((picture) => (
-            <Carousel.Item key={picture.id}>
-              <Card.Img
-                style={{ height: '200px', objectFit: 'cover' }}
-                variant="top"
-                src={picture.img}
-              />
-              <Carousel.Caption />
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      </Link>
+      <Link to={`/house/${post.id}`} reloadDocument className="cardone-link"></Link>
+      <Carousel activeIndex={index} onSelect={handleSelect}>
+        {post.Pictures.map((picture) => (
+          <Carousel.Item key={picture.id}>
+            <Card.Img
+              style={{ height: '200px', objectFit: 'cover' }}
+              variant="top"
+              src={`/img/${picture.img}`}
+            />
+            <Carousel.Caption />
+          </Carousel.Item>
+        ))}
+      </Carousel>
       <Card.Body>
         <Card.Title>{post.title}</Card.Title>
         <Card.Text>{post.description}</Card.Text>
