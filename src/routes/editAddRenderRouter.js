@@ -28,6 +28,4 @@ editAddRenderRouter.get('/house/:id', async (req, res) => {
   }
 });
 
-
-
 export default editAddRenderRouter;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default function OneCard({ post, handlerOnDelete, user }) {
+export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }) {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -43,7 +43,9 @@ export default function OneCard({ post, handlerOnDelete, user }) {
               </button>
             </>
           )}
-          <button className="btn" type="submit">
+
+          <button className="btn"type='button' onClick={() => favoriteHandler(post.id)}>
+
             <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
           </button>
         </div>

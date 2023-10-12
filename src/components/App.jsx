@@ -10,8 +10,9 @@ import AddPage from './AddPage';
 import EditPage from './EditPage';
 import NewNavBar from './UI/NewNavBar';
 import HouseDetail from './HouseDetail';
+import Favorites from './Favorites';
 
-export default function App({ allposts, user, house, myPostId, allCategory }) {
+export default function App({ allposts, user, house, myPostId, allCategory, favoritePosts }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
   const [posts, setPosts] = useState(allposts);
@@ -23,7 +24,13 @@ export default function App({ allposts, user, house, myPostId, allCategory }) {
     }
   };
 
-  //= ========================
+  const favoriteHandler = async (id) => {
+    const data = await axios.post(`/api/post/favorite/${id}`);
+    if (data.status === 200) {
+      console.log(data);
+    }
+    console.log(data.status);
+  };
 
   const [input, setInput] = useState({
     cat_id: '',
@@ -40,12 +47,15 @@ export default function App({ allposts, user, house, myPostId, allCategory }) {
   return (
     <>
       <div className="container">
-        <NewNavBar user={user} />
+        <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler} />
       </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
         <Route path="post/house/:id" element={<HouseDetail house={house} />} />
+
+        <Route path="/post/favorites" element={<Favorites posts={favoritePosts} />} />
+
         <Route
           path="/post/add"
           element={
@@ -72,7 +82,14 @@ export default function App({ allposts, user, house, myPostId, allCategory }) {
         />
         <Route
           path="/"
-          element={<Home user={user} handlerOnDelete={handlerOnDelete} posts={posts} />}
+          element={
+            <Home
+              favoriteHandler={favoriteHandler}
+              user={user}
+              handlerOnDelete={handlerOnDelete}
+              posts={posts}
+            />
+          }
         />
       </Routes>
       <Footer />
