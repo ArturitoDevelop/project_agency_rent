@@ -10,7 +10,6 @@ export default function Layout({ initState }) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"/>
-  <link rel="stylesheet" href="./style.css"/>
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{

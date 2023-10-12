@@ -25,7 +25,6 @@ apiAuthRouter.post('/signup', async (req, res) => {
     email: user.email,
     id: user.id,
     isAdmin: user.isAdmin,
-  
   };
   res.sendStatus(200);
 });
@@ -43,7 +42,7 @@ apiAuthRouter.post('/signin', async (req, res) => {
     },
   });
 
-  if (!user || !await bcrypt.compare(password, user.password)) {
+  if (!user || !(await bcrypt.compare(password, user.password))) {
     res.status(400).json({ message: 'user not found' });
     return;
   }
@@ -52,6 +51,7 @@ apiAuthRouter.post('/signin', async (req, res) => {
     name: user.name,
     email: user.email,
     id: user.id,
+    isAdmin: user.isAdmin,
   };
 
   res.sendStatus(200);
