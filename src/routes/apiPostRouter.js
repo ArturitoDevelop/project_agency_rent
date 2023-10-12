@@ -1,3 +1,5 @@
+
+
 import express from 'express';
 import fs from 'fs/promises';
 import sharp from 'sharp';
@@ -9,12 +11,26 @@ const apiPostRouter = express.Router();
 apiPostRouter.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-
-    if (res.session.user.isAdmin === true) {
+    if (req.session.user.isAdmin === true) {
       const post = await Post.findByPk(id);
       await post.destroy();
-      res.sendStatus(200);
     }
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+apiPostRouter.post('/favorite/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const data = await Favorite.create({
+      user_id: req.session?.user?.id,
+      post_id: id,
+    });
+    console.log(data);
+    res.sendStatus(200);
   } catch (err) {
     console.log(err);
   }
@@ -61,20 +77,24 @@ apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
 // update post
 apiPostRouter.patch('/update/:id', async (req, res) => {
   try {
-    const updatePost = await Post.update(
-      {
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-      },
-      {
-        where: { id: req.params.id },
-      },
-    );
-    res.status(200).json(updatePost);
+    if (req.session.user.isAdmin === true) {
+      const updatePost = await Post.update(
+        {
+          title: req.body.title,
+          description: req.body.description,
+          price: req.body.price,
+        },
+        {
+          where: { id: req.params.id },
+        },
+      );
+      res.status(200).json(updatePost);
+    }
   } catch (error) {
     console.error('Ошибка при обновлении поста:', error);
   }
 });
+
+
 
 export default apiPostRouter;

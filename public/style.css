@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin:5% 0 0 0 ;
+  margin: 5% 0 0 0;
 }
 
 .cardone {
@@ -295,3 +295,48 @@ p {
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
+
+
+.addpost {
+  display: block;
+  min-width: 100px;
+}
+.house-container {
+  max-width: 600px;
+  margin: 5% auto;
+  padding: 20px;
+  background-color: transparent; /* Установим прозрачный фон */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.house-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.image-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 10px; 
+}
+
+.house-image {
+  width: 100%; 
+  max-height: 200px; 
+  object-fit: cover; 
+}
+
+.house-image-main {
+  grid-column: span 2; 
+  max-height: 300px; 
+  object-fit: cover; 
+}
+
+.house-description, .house-price {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+

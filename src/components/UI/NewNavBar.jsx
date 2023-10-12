@@ -1,13 +1,24 @@
 import React from 'react';
 
-export default function NewNavBar() {
+export default function NewNavBar({ currentUser, logoutHandler }) {
   return (
     <nav className="navMenu">
-      <a href="/">Home</a>
-      <a href="/authPage">SignUp</a>
-      <a href="/loginPage">Login</a>
-      <a href="#">About</a>
+      {currentUser ? (
+        <>
+          <a href="/">Home</a>
+          <a href='/' onClick={(e)=>logoutHandler(e)}>
+            Logout
+          </a>
+          <a href="/favorites">Favorites</a>
+        </>
+      ) : (
+        <>
+          <a href="/">Home</a>
+          <a href="/authPage">SignUp</a>
+          <a href="/loginPage">Login</a>
+        </>
+      )}
       <div className="dot" />
     </nav>
-  )
+  );
 }

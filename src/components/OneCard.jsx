@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Card, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export default function OneCard({ post, handlerOnDelete, user }) {
+export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }) {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -10,6 +11,7 @@ export default function OneCard({ post, handlerOnDelete, user }) {
 
   return (
     <Card className="cardone" style={{ width: '18rem' }}>
+      <Link to={`/house/${post.id}`} reloadDocument className="cardone-link"></Link>
       <Carousel activeIndex={index} onSelect={handleSelect}>
         {post.Pictures.map((picture) => (
           <Carousel.Item key={picture.id}>
@@ -30,17 +32,19 @@ export default function OneCard({ post, handlerOnDelete, user }) {
         <div className="d-flex justify-content-between">
           {user?.isAdmin === true && (
             <>
-              <Button onClick={() => handlerOnDelete(post.id)} variant="danger">
-                Delete
-              </Button>
-              <Button variant="warning">
+              <button type="submit" className="btn" onClick={() => handlerOnDelete(post.id)}>
+                <img className="iconfav" src="/img/trash.png" alt="" />
+              </button>
+              <button className="btn" type="submit">
                 <a target="_blank" className="bt" href={`/post/${post.id}`} rel="noreferrer">
-                  Edit
+                  <img className="iconfav" src="/img/edit.png" alt="" />
                 </a>
-              </Button>
+              </button>
             </>
           )}
-          <button className='btn' type="submit">
+
+          <button className="btn"type='button' onClick={() => favoriteHandler(post.id)}>
+
             <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
           </button>
         </div>
