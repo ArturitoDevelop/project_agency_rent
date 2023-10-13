@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Col, Form, Row, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 export default function AddPage({ input, allCategory, changeHandler, user }) {
   const submitHandler = async (e) => {
@@ -19,77 +19,82 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
     if (response.status === 200) {
       window.location = '/';
     }
-
-    e.target.reset();
   };
 
   return (
-    <div className='conteinerform'>
-      {user?.isAdmin === true && (
-        <Form className="disForm" encType="multipart/form-data" onSubmit={submitHandler}>
-          <Row className="mb-3">
-            <Form.Select
-              className="input_style"
-              name="cat_id"
-              value={input.cat_id}
-              onChange={changeHandler}
-              placeholder="Тип объекта"
-              aria-label="Default select example"
-            >
-              <option>Недвижимость</option>
-              {allCategory.map((el) => (
-                <option value={el.id} key={el.id}>
-                  {el.title}
-                </option>
-
-              ))}
-            </Form.Select>
-
-            <Form.Group as={Col} controlId="formGridPassword">
-
-              <Form.Control
+    user?.isAdmin === true && (
+      <div className="container" style={{ justifyContent: 'center' }}>
+        <div className="text">Новое объявление</div>
+        <form encType="multipart/form-data" onSubmit={submitHandler}>
+          <Form.Select
+            className="input_style"
+            name="cat_id"
+            value={input.cat_id}
+            onChange={changeHandler}
+            placeholder="Тип объекта"
+            aria-label="Default select example"
+          >
+            <option>Недвижимость</option>
+            {allCategory.map((el) => (
+              <option value={el.id} key={el.id}>
+                {el.title}
+              </option>
+            ))}
+          </Form.Select>
+          <div className="form-row">
+            <div className="input-data">
+              <input
                 name="title"
                 type="text"
                 placeholder="Название объекта"
                 value={input.title}
                 onChange={changeHandler}
+                required
               />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridPassword">
-
-              <Form.Control
+              <div className="underline" />
+        
+            </div>
+            <div className="input-data">
+              <input
                 name="description"
                 value={input.description}
                 onChange={changeHandler}
                 type="text"
                 placeholder="Описание объекта"
+                required
               />
-            </Form.Group>
-          </Row>
-
-          <Form.Group className="mb-3" controlId="formGridAddress1">
-
-            <Form.Control
-              name="price"
-              placeholder="Цена"
-              value={input.price}
-              onChange={changeHandler}
-            />
-          </Form.Group>
-
-          <div className="downloadphoto">
-            <label htmlFor="file-upload" className="custom-file-upload">
-              Выбрать файл
-            </label>
-            <input type="file" id="file-upload" name="files" accept="image" multiple />
+              <div className="underline" />
+            </div>
           </div>
-
-
-          <Button className="btnSub" variant="primary" type="submit">
-            Добавить
-          </Button>
-        </Form>
-      )}
-    </div>
+          <div className="form-row">
+            <div className="input-data">
+              <input
+                name="price"
+                placeholder="Цена"
+                value={input.price}
+                onChange={changeHandler}
+                required
+              />
+              <div className="underline" />
+           
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="downloadphoto">
+              <label htmlFor="file-upload" className="custom-file-upload">
+                Выбрать файл
+              </label>
+              <input type="file" id="file-upload" name="files" accept="image/*" multiple />
+            </div>
+          </div>
+          <div className="form-row submit-btn">
+            <div className="input-data">
+              <div className="inner" />
+              <input type="submit" value="submit" />
+            </div>
+          </div>
+        </form>
+      </div>
+    )
   );
 }
