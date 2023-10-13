@@ -18,10 +18,6 @@
   text-decoration: none;
 }
 
-/* config.css */
-
-/* helpers/align.css */
-
 .align {
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -245,7 +241,7 @@ p {
   text-transform: uppercase;
   font-weight: 500;
   display: inline-block;
-  width: 80px;
+  padding: 0 10px 0 0;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
@@ -296,12 +292,6 @@ p {
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   opacity: 1;
-}
-
-.addpost {
-  display: block;
-  min-width: 100px;
-  margin: 0 0 0 30px;
 }
 
 .house-container {
@@ -527,3 +517,83 @@ input[type="file"] {
   background-color: #e0e0e0;
   color: #0d6efd;
 }
+
+.noselect {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+ }
+ 
+ .noselect, .noselect span {
+  transition: 200ms;
+ }
+ 
+ .noselect .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .noselect .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .noselect svg {
+  width: 15px;
+  fill: #eee;
+ }
+ 
+ .noselect:hover {
+  background: #ff3636;
+ }
+ 
+ .noselect:hover .text {
+  color: transparent;
+ }
+ 
+ .noselect:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+ }
+ 
+ .noselect:focus {
+  outline: none;
+ }
+ 
+ .noselect:active .icon svg {
+  transform: scale(0.8);
+ }
+
+.btngroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 10px;
+  color: black;
+}
+
+.btngroup button {
+  color: black;
+}
+
+.logo {
+  margin: 20px 0 0 30px;
+  max-width: 100px;
+  max-height: 100px;
+}
+

@@ -32,8 +32,27 @@ apiPostRouter.post('/favorite/:id', async (req, res) => {
   }
 });
 
+apiPostRouter.delete('/favorite/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // const Fav = await Favorite.findOne({
+    //   where: {
+    //     user_id: req.session?.user?.id,
+    //     post_id: id,
+    //   },
+    // });
+    // await Fav.destroy();
+    await Favorite.destroy({ where: {
+       post_id: req.params.id,
+      user_id: req.session?.user?.id } });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
-  console.log(req.files, "-----------");
+  console.log(req.files, '-----------');
   try {
     const { title, description, price, cat_id } = req.body;
     if (!req.files || req.files.length === 0) {
@@ -65,10 +84,9 @@ apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
 
     res.status(200).json(data);
   } catch (error) {
-    console.error("Ошибка при добавлении поста:", error);
+    console.error('Ошибка при добавлении поста:', error);
   }
 });
-
 
 // update post
 apiPostRouter.patch('/update/:id', async (req, res) => {
@@ -88,6 +106,20 @@ apiPostRouter.patch('/update/:id', async (req, res) => {
     }
   } catch (error) {
     console.error('Ошибка при обновлении поста:', error);
+  }
+});
+
+apiPostRouter.post('/filter/:value', async (req, res) => {
+  const { value } = req.params;
+  try {
+    const { value } = req.params;
+    const data = await Post.findAll({
+      where: { cat_id: value },
+      include: Picture,
+    });
+    res.status(200).send(data);
+  } catch (err) {
+    console.log(err);
   }
 });
 

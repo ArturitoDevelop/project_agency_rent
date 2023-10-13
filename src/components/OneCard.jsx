@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Card, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import DeleteBtn from './UI/DeleteBtn';
 
-export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }) {
+
+export default function OneCard({ post, handlerOnDelete, user, favoriteHandler, deleteFavHandler, currentUser }) {
+
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {
@@ -12,7 +15,7 @@ export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }
   return (
     <Card className="cardone" style={{ width: '18rem' }}>
       <Carousel activeIndex={index} onSelect={handleSelect}>
-        {post.Pictures.map((picture) => (
+        {post.Pictures?.map((picture) => (
           <Carousel.Item key={picture.id}>
             <Card.Img
               style={{ height: '200px', objectFit: 'cover' }}
@@ -43,10 +46,13 @@ export default function OneCard({ post, handlerOnDelete, user, favoriteHandler }
               </button>
             </>
           )}
-
-          <button className="btn" type="button" onClick={() => favoriteHandler(post.id)}>
-            <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
-          </button>
+          {currentUser && (<>
+            <button className="btn" type="button" onClick={() => favoriteHandler(post.id)}>
+              <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
+            </button>
+             <DeleteBtn deleteFavHandler={deleteFavHandler} postId={post.id}  />
+          </>
+          )}
         </div>
       </Card.Body>
     </Card>
