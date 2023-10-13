@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Form, Row, Button } from 'react-bootstrap';
 
 export default function AddPage({ input, allCategory, changeHandler, user }) {
   const submitHandler = async (e) => {
@@ -25,9 +25,9 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
   };
 
   return (
-    <>
+    <div className='conteinerform'>
       {user?.isAdmin === true && (
-        <Form encType="multipart/form-data" onSubmit={submitHandler}>
+        <Form className="disForm" encType="multipart/form-data" onSubmit={submitHandler}>
           <Row className="mb-3">
             <Form.Select
               className="input_style"
@@ -42,21 +42,22 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
                 <option value={el.id} key={el.id}>
                   {el.title}
                 </option>
+
               ))}
             </Form.Select>
 
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Заголовок</Form.Label>
+
               <Form.Control
                 name="title"
                 type="text"
-                placeholder="Описание объекта"
+                placeholder="Название объекта"
                 value={input.title}
                 onChange={changeHandler}
               />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridPassword">
-              <Form.Label>Описание</Form.Label>
+
               <Form.Control
                 name="description"
                 value={input.description}
@@ -68,7 +69,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
           </Row>
 
           <Form.Group className="mb-3" controlId="formGridAddress1">
-            <Form.Label>Цена</Form.Label>
+
             <Form.Control
               name="price"
               placeholder="Цена"
@@ -78,12 +79,18 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
           </Form.Group>
 
           <div className="downloadphoto">
-            <input type="file" name="files" accept="image" multiple />
+            <label htmlFor="file-upload" className="custom-file-upload">
+              Выбрать файл
+            </label>
+            <input type="file" id="file-upload" name="files" accept="image" multiple />
           </div>
 
-          <button type="submit">ok</button>
+
+          <Button className="btnSub" variant="primary" type="submit">
+            Добавить
+          </Button>
         </Form>
       )}
-    </>
+    </div>
   );
 }

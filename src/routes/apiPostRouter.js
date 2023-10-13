@@ -32,6 +32,25 @@ apiPostRouter.post('/favorite/:id', async (req, res) => {
   }
 });
 
+apiPostRouter.delete('/favorite/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    // const Fav = await Favorite.findOne({
+    //   where: {
+    //     user_id: req.session?.user?.id,
+    //     post_id: id,
+    //   },
+    // });
+    // await Fav.destroy();
+    await Favorite.destroy({ where: {
+       post_id: req.params.id,
+      user_id: req.session?.user?.id } });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
   console.log(req.files, '-----------');
   try {
