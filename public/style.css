@@ -29,7 +29,7 @@
   /* Horizontally center the content */
   align-items: center;
   /* Vertically center the content */
-  height: 100vh;
+  height: 44vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -340,7 +340,7 @@ p {
 }
 
 .containernav {
-  padding: 0 0 10% 0;
+  padding: 0 0 5% 0;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
@@ -348,12 +348,12 @@ p {
 
 
 .NewFooter {
-  margin-top: 50px;
+  /* margin-top: 50px; */
   display: flex;
   /* background: #333; */
   justify-content: flex-end;
   align-items: flex-end;
-  min-height: 50vh;
+  min-height: 39vh;
 }
 
 .footer {
@@ -527,21 +527,22 @@ input[type="file"] {
   background: red;
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
   background: #e62222;
- }
- 
- .noselect, .noselect span {
+}
+
+.noselect,
+.noselect span {
   transition: 200ms;
- }
- 
- .noselect .text {
+}
+
+.noselect .text {
   transform: translateX(35px);
   color: white;
   font-weight: bold;
- }
- 
- .noselect .icon {
+}
+
+.noselect .icon {
   position: absolute;
   border-left: 1px solid #c41b1b;
   transform: translateX(110px);
@@ -550,40 +551,40 @@ input[type="file"] {
   display: flex;
   align-items: center;
   justify-content: center;
- }
- 
- .noselect svg {
+}
+
+.noselect svg {
   width: 15px;
   fill: #eee;
- }
- 
- .noselect:hover {
+}
+
+.noselect:hover {
   background: #ff3636;
- }
- 
- .noselect:hover .text {
+}
+
+.noselect:hover .text {
   color: transparent;
- }
- 
- .noselect:hover .icon {
+}
+
+.noselect:hover .icon {
   width: 150px;
   border-left: none;
   transform: translateX(0);
- }
- 
- .noselect:focus {
+}
+
+.noselect:focus {
   outline: none;
- }
- 
- .noselect:active .icon svg {
+}
+
+.noselect:active .icon svg {
   transform: scale(0.8);
- }
+}
 
 .btngroup {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 0 10px;
+  margin: 0 0 5% 10px;
   color: black;
 }
 
@@ -596,6 +597,8 @@ input[type="file"] {
   max-width: 100px;
   max-height: 100px;
 }
+
+
 
 .formedit {
   max-width: 50%;
@@ -619,3 +622,4 @@ input[type="file"] {
 .form-label {
   margin: 0;
 }
+
