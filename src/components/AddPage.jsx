@@ -22,9 +22,11 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
   };
 
   return (
-    user?.isAdmin === true && (
-      <div className="container" style={{ justifyContent: 'center' }}>
-        <div className="text">Новое объявление</div>
+    <div className='correction'>
+
+    {user?.isAdmin === true && (
+      <div className="containerCard" style={{ justifyContent: 'center' }}>
+        <div className="newtext">Новое объявление</div>
         <form encType="multipart/form-data" onSubmit={submitHandler}>
           <Form.Select
             className="input_style"
@@ -41,6 +43,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
               </option>
             ))}
           </Form.Select>
+          <br />
           <div className="form-row">
             <div className="input-data">
               <input
@@ -54,6 +57,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
               <div className="underline" />
         
             </div>
+            <br />
             <div className="input-data">
               <input
                 name="description"
@@ -66,6 +70,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
               <div className="underline" />
             </div>
           </div>
+          <br />
           <div className="form-row">
             <div className="input-data">
               <input
@@ -79,6 +84,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
            
             </div>
           </div>
+          <br />
           <div className="form-row">
             <div className="downloadphoto">
               <label htmlFor="file-upload" className="custom-file-upload">
@@ -87,6 +93,7 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
               <input type="file" id="file-upload" name="files" accept="image/*" multiple />
             </div>
           </div>
+          <br />
           <div className="form-row submit-btn">
             <div className="input-data">
               <div className="inner" />
@@ -94,7 +101,8 @@ export default function AddPage({ input, allCategory, changeHandler, user }) {
             </div>
           </div>
         </form>
-      </div>
-    )
+      </div>)}
+    </div>
+    
   );
 }
