@@ -17,7 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    cat_id: DataTypes.INTEGER
+    cat_id: DataTypes.INTEGER,
+    coordX: DataTypes.FLOAT,
+    coordY: DataTypes.FLOAT,
   }, {
     sequelize,
     modelName: 'Post',

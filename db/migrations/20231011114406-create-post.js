@@ -26,6 +26,12 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      coordX: {
+        type: Sequelize.FLOAT,
+      },
+      coordY: {
+        type: Sequelize.FLOAT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
