@@ -46,13 +46,12 @@ export default function OneCard({ post, handlerOnDelete, user, favoriteHandler, 
               </button>
             </>
           )}
-
-
-          {currentUser && (
+          {currentUser && (<>
             <button className="btn" type="button" onClick={() => favoriteHandler(post.id)}>
               <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
             </button>
              <DeleteBtn deleteFavHandler={deleteFavHandler} postId={post.id}  />
+          </>
           )}
         </div>
       </Card.Body>
