@@ -15,7 +15,7 @@ import Favorites from './Favorites';
 export default function App({ allposts, user, house, myPostId, allCategory, favoritePosts }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
-  const [posts, setPosts] = useState(allposts);
+  const [posts, setPosts] = useState(allposts || []);
 
   const handlerOnDelete = async (id) => {
     const response = await axios.delete(`/api/post/${id}`);
@@ -83,10 +83,13 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
           path="/"
           element={
             <Home
+              currentUser={currentUser}
+              allposts={allposts}
               favoriteHandler={favoriteHandler}
               user={user}
               handlerOnDelete={handlerOnDelete}
               posts={posts}
+              setPosts={setPosts}
             />
           }
         />

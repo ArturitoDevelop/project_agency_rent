@@ -352,3 +352,15 @@ p {
 .containernav {
   padding: 0 0 10% 0;
 }
+
+.btngroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 10px;
+  color: black;
+}
+
+.btngroup button {
+  color: black;
+}
