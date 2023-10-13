@@ -22,13 +22,26 @@ apiPostRouter.delete('/:id', async (req, res) => {
 apiPostRouter.post('/favorite/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const data = await Favorite.create({
-      user_id: req.session?.user?.id,
+    const userId = req.session?.user?.id;
+    const existingFavorite = await Favorite.findOne({
+      where: {
+        user_id: userId,
+        post_id: id,
+      },
+    });
+
+    if (existingFavorite) {
+      return res.status(400).json({ message: "Запись уже существует в избранном" });
+    }
+    await Favorite.create({
+      user_id: userId,
       post_id: id,
     });
+
     res.sendStatus(200);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ message: "Произошла ошибка при добавлении в избранное" });
   }
 });
 

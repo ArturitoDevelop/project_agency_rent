@@ -18,6 +18,10 @@ export default function Layout({ initState }) {
         />
         <script src="https://api-maps.yandex.ru/2.1/?apikey=915cb457-6cd9-4082-9b13-3e8ad2203675&lang=ru_RU" />
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" />
+        <script
+          type="module"
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        />
         <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" />
         <link
           rel="stylesheet"
@@ -32,7 +36,7 @@ export default function Layout({ initState }) {
         <title>Document</title>
       </head>
       <body>
-        <div id="root">
+        <div className="root" id="root">
           <StaticRouter location={initState.path}>
             <App {...initState} />
           </StaticRouter>
