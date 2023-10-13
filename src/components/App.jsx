@@ -91,7 +91,8 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
           }
         />
       </Routes>
-      <Footer />
+      <Footer
+       />
     </>
   );
 }
