@@ -59,7 +59,6 @@ apiAuthRouter.post('/signin', signUpUserMiddleware, async (req, res) => {
 });
 
 apiAuthRouter.get('/logout', (req, res) => {
-  console.log('--------logout');
   req.session.destroy()
   res.clearCookie('user_sid')
   res.sendStatus(200);

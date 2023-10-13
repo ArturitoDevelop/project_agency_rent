@@ -1,5 +1,5 @@
 import express from 'express';
-import { Post, Category } from '../../db/models';
+import { Post, Category, Picture, Favorite } from '../../db/models';
 
 const editAddRenderRouter = express.Router();
 
@@ -15,6 +15,17 @@ editAddRenderRouter.get('/:id', async (req, res) => {
   res.render('Layout', { myPostId, allCategory });
 });
 
+editAddRenderRouter.get('/house/:id', async (req, res) => {
+  const houseId = req.params.id;
 
+  try {
+    const house = await Post.findByPk(houseId, {
+      include: [Picture, Category, Favorite],
+    });
+    return res.render('Layout', { house });
+  } catch (error) {
+    return res.status(500).json({ message: 'Ошибка' });
+  }
+});
 
 export default editAddRenderRouter;

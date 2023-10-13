@@ -3,10 +3,15 @@ import OneCard from './OneCard';
 
 export default function Home({ posts, handlerOnDelete, user, favoriteHandler }) {
   return (
-    <div className="container" >
+    <div className="container">
       {posts?.map((el) => (
-        <OneCard key={el.id} favoriteHandler={favoriteHandler} user={user} handlerOnDelete={handlerOnDelete} post={el} />
-
+        <OneCard
+          key={el.id}
+          favoriteHandler={favoriteHandler}
+          user={user}
+          handlerOnDelete={handlerOnDelete}
+          post={el}
+        />
       ))}
     </div>
   );

@@ -27,9 +27,9 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
   const favoriteHandler = async (id) => {
     const data = await axios.post(`/api/post/favorite/${id}`);
     if (data.status === 200) {
-      console.log(data);
+      console.log('УСПЕЕЕЕЕЕЕЕЕЕШНО');
     }
-    console.log(data.status);}
+  };
 
   const [input, setInput] = useState({
     cat_id: '',
@@ -45,15 +45,15 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
 
   return (
     <>
-      <div className="container">
-        <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler}  />
+      <div className="containernav">
+        <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler} />
       </div>
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
 
         <Route path="/favorites" element={<Favorites favoritePosts={favoritePosts} />} />
-        <Route path="/house/:id" element={<HouseDetail house={house} />} />
+        <Route path="/post/house/:id" element={<HouseDetail house={house} />} />
 
         <Route
           path="/post/add"
