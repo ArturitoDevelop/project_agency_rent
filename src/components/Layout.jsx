@@ -16,7 +16,10 @@ export default function Layout({ initState }) {
             __html: `window.initState=${JSON.stringify(initState)}`,
           }}
         />
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" />
+        <script
+          type="module"
+          src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+        />
         <script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" />
         <link
           rel="stylesheet"
@@ -31,7 +34,7 @@ export default function Layout({ initState }) {
         <title>Document</title>
       </head>
       <body>
-        <div id="root">
+        <div className="root" id="root">
           <StaticRouter location={initState.path}>
             <App {...initState} />
           </StaticRouter>

@@ -4,12 +4,6 @@ function HouseDetail({ house }) {
   if (!house) {
     return <div>Дом не найден</div>;
   }
-  // function HouseDetail() {
-  //   const [houseInfo, setHouseInfo] = useState({title: "TETS1", description: "TETS1", price: "TETS1"})
-  //   useEffect(() => {
-  //     console.log("Сделай запрос им все будет )))")
-  //     setHouseInfo({title: "TETS", description: "TETS", price: "TETS"})
-  //   }, [])
 
   return (
     <div className="house-container">

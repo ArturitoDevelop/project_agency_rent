@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import axios from 'axios';
@@ -13,6 +13,21 @@ export default function Home({
   allposts,
   currentUser,
 }) {
+  const ymapRef = useRef(null);
+
+  const loadMap = () => {
+    // запуск карты
+    if (window.ymaps) {
+      window.ymaps.ready(() => {
+        ymapRef.current = new window.ymaps.Map('map', {
+          center: [55.751574, 37.573856],
+          zoom: 10,
+        });
+        const myMap = ymapRef.current;
+      });
+    }
+  };
+
   const filterHandler = async (e) => {
     const { value } = e.target;
     if (value === '4') {
@@ -23,6 +38,9 @@ export default function Home({
     }
   };
 
+  useEffect(() => {
+    loadMap();
+  }, []);
   return (
     <>
       <ButtonGroup className="btngroup" variant="text" aria-label="text button group">
@@ -43,7 +61,7 @@ export default function Home({
       <div className="container">
         {posts?.map((el) => (
           <OneCard
-          currentUser={currentUser}
+            currentUser={currentUser}
             key={el.id}
             favoriteHandler={favoriteHandler}
             user={user}
@@ -51,6 +69,7 @@ export default function Home({
             post={el}
           />
         ))}
+        <div id="map" className="map" />
       </div>
     </>
   );
