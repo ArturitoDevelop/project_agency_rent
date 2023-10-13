@@ -51,11 +51,14 @@ export default function OneCard({
               </button>
             </>
           )}
-
-          <button className="btn" type="button" onClick={() => favoriteHandler(post.id)}>
-            <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
-          </button>
-          <DeleteBtn deleteFavHandler={deleteFavHandler} postId={post.id} />
+          {user?.isAdmin !== true && user && (
+            <>
+              <button className="btn" type="button" onClick={() => favoriteHandler(post.id)}>
+                <img className="iconfav" src="/img/free-icon-home-1098486.png" alt="" />
+              </button>
+              <DeleteBtn deleteFavHandler={deleteFavHandler} postId={post.id} />
+            </>
+          )}
         </div>
       </Card.Body>
     </Card>

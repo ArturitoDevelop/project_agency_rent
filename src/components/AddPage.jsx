@@ -4,7 +4,6 @@ import { Col, Form, Row, Button } from 'react-bootstrap';
 
 export default function AddPage({ input, allCategory, changeHandler, user }) {
   const submitHandler = async (e) => {
-    // console.log('click', e.target.files.files);
     e.preventDefault();
     const formData = new FormData();
     const fileInput = e.target.files;
