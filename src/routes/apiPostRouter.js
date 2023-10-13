@@ -109,4 +109,18 @@ apiPostRouter.patch('/update/:id', async (req, res) => {
   }
 });
 
+apiPostRouter.post('/filter/:value', async (req, res) => {
+  const { value } = req.params;
+  try {
+    const { value } = req.params;
+    const data = await Post.findAll({
+      where: { cat_id: value },
+      include: Picture,
+    });
+    res.status(200).send(data);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 export default apiPostRouter;
