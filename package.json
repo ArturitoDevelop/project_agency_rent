@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "babel-node src/server.js",
     "start": "webpack -d eval-source-map && babel-node src/server.js",
+    "build": "webpack && babel src --copy-files --out-dir distr",
     "webpack": "webpack -wd eval-source-map",
     "db": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "launch": "npm run prep-db && webpack -d eval-source-map && babel-node src/server.js",
@@ -35,6 +36,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@babel/cli": "^7.23.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.13",

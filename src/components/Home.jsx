@@ -13,10 +13,10 @@ export default function Home({
   allposts,
   currentUser,
 }) {
-  const ymapRef = useRef(null);
 
-  const loadMap = () => {
-    // запуск карты
+  const ymapRef = useRef(null)
+
+  const loadMap = () => { // запуск карты
     if (window.ymaps) {
       window.ymaps.ready(() => {
         ymapRef.current = new window.ymaps.Map('map', {
@@ -27,6 +27,10 @@ export default function Home({
       });
     }
   };
+
+
+
+
 
   const filterHandler = async (e) => {
     const { value } = e.target;
@@ -69,7 +73,7 @@ export default function Home({
             post={el}
           />
         ))}
-        <div id="map" className="map" />
+        <div id="map" className='map' />
       </div>
     </>
   );
