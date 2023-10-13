@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Carousel } from 'react-bootstrap';
+import {  Card, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import DeleteBtn from './UI/DeleteBtn';
 
