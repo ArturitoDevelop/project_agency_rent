@@ -45,7 +45,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
 
   return (
     <>
-      <div className="container">
+      <div className="containernav">
         <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler} />
       </div>
       <Routes>
@@ -53,7 +53,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
 
         <Route path="/favorites" element={<Favorites favoritePosts={favoritePosts} />} />
-        <Route path="/house/:id" element={<HouseDetail house={house} />} />
+        <Route path="/post/house/:id" element={<HouseDetail house={house} />} />
 
         <Route
           path="/post/add"

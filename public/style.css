@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  margin: 5% 0 0 0;
+  padding: 0 8%;
 }
 
 .cardone {
@@ -266,7 +266,7 @@ p {
   transition: all 0.2s ease-in-out;
 }
 
-.navMenu a:nth-child(1):hover~.dot {
+.navMenu a:nth-child(1):hover ~ .dot {
   -webkit-transform: translateX(30px);
   transform: translateX(30px);
   -webkit-transition: all 0.2s ease-in-out;
@@ -274,7 +274,7 @@ p {
   opacity: 1;
 }
 
-.navMenu a:nth-child(2):hover~.dot {
+.navMenu a:nth-child(2):hover ~ .dot {
   -webkit-transform: translateX(110px);
   transform: translateX(110px);
   -webkit-transition: all 0.2s ease-in-out;
@@ -282,7 +282,7 @@ p {
   opacity: 1;
 }
 
-.navMenu a:nth-child(3):hover~.dot {
+.navMenu a:nth-child(3):hover ~ .dot {
   -webkit-transform: translateX(200px);
   transform: translateX(200px);
   -webkit-transition: all 0.2s ease-in-out;
@@ -290,14 +290,13 @@ p {
   opacity: 1;
 }
 
-.navMenu a:nth-child(4):hover~.dot {
+.navMenu a:nth-child(4):hover ~ .dot {
   -webkit-transform: translateX(285px);
   transform: translateX(285px);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   opacity: 1;
 }
-
 
 .addpost {
   display: block;
@@ -344,4 +343,12 @@ p {
 .house-price {
   font-size: 16px;
   margin-bottom: 10px;
+}
+
+.card-title {
+  color: black;
+}
+
+.containernav {
+  padding: 0 0 10% 0;
 }
