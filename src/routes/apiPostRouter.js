@@ -52,7 +52,6 @@ apiPostRouter.delete('/favorite/:id', async (req, res) => {
 });
 
 apiPostRouter.post('/add', upload.array('files', 3), async (req, res) => {
-  console.log(req.files, '-----------');
   try {
     const { title, description, price, cat_id } = req.body;
     if (!req.files || req.files.length === 0) {

@@ -15,11 +15,8 @@ import Favorites from './Favorites';
 export default function App({ allposts, user, house, myPostId, allCategory, favoritePosts }) {
   const { currentUser, signInHandler, signUpHandler, logoutHandler } = useUser(user);
 
-
   const [posts, setPosts] = useState(allposts);
   const [favorites, setFavorites] = useState(favoritePosts);
-
-
 
   const handlerOnDelete = async (id) => {
     const response = await axios.delete(`/api/post/${id}`);
@@ -36,7 +33,6 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
   };
 
   const deleteFavHandler = async (id) => {
-    console.log({ id });
     const data = await axios.delete(`/api/post/favorite/${id}`);
     if (data.status === 200) {
       setFavorites((prev) => prev.filter((el) => el.id !== id));
@@ -57,14 +53,16 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
 
   return (
     <>
-        <NewNavBar user={user} currentUser={currentUser} logoutHandler={logoutHandler} />
+      <NewNavBar user={user} currentUser={currentUser} logoutHandler={logoutHandler} />
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
 
         <Route
           path="/favorites"
-          element={<Favorites  favoritePosts={favorites} deleteFavHandler={deleteFavHandler} />}
+          element={
+            <Favorites user={user} favoritePosts={favorites} deleteFavHandler={deleteFavHandler} />
+          }
         />
         <Route path="/post/house/:id" element={<HouseDetail house={house} />} />
 
@@ -107,8 +105,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
           }
         />
       </Routes>
-      <Footer
-       />
+      <Footer />
     </>
   );
 }

@@ -13,10 +13,13 @@ export default function NewNavBar({ currentUser, logoutHandler }) {
             <a href="/" onClick={(e) => logoutHandler(e)}>
               Logout
             </a>
-            {currentUser.id !== 1 && <a href="/favorites">Favorites</a>}
-            <a className="addpost" href="/post/add">
-              Add Post
-            </a>
+            {currentUser?.isAdmin !== true && <a href="/favorites">Favorites</a>}
+
+            {currentUser?.isAdmin === true && (
+              <a className="addpost" href="/post/add">
+                Add Post
+              </a>
+            )}
           </>
         ) : (
           <>

@@ -597,3 +597,25 @@ input[type="file"] {
   max-height: 100px;
 }
 
+.formedit {
+  max-width: 50%;
+}
+
+.containerform {
+  display: flex;
+  justify-content: center;
+}
+
+.input_style {
+  width: 96%;
+}
+
+.selectcontainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.form-label {
+  margin: 0;
+}

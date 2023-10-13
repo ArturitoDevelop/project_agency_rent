@@ -15,12 +15,10 @@ export default function Home({
 }) {
   const filterHandler = async (e) => {
     const { value } = e.target;
-    console.log(allposts);
     if (value === '4') {
       setPosts(allposts);
     } else {
       const res = await axios.post(`/api/post/filter/${value}`);
-      console.log('rararara');
       setPosts(res.data);
     }
   };
