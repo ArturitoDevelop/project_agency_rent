@@ -1,0 +1,6 @@
+node_modules/
+sessions/
+distr/
+public/app.js
+public/vendor.js
+.env

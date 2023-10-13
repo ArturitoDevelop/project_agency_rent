@@ -35,8 +35,8 @@ const sessionConfig = {
   },
 };
 
-app.engine('jsx', jsxRender);
-app.set('view engine', 'jsx');
+app.engine('js', jsxRender);
+app.set('view engine', 'js');
 app.set('views', path.join(__dirname, 'components'));
 
 app.use(express.static('public'));
