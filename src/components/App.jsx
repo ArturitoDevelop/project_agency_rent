@@ -45,9 +45,7 @@ export default function App({ allposts, user, house, myPostId, allCategory, favo
 
   return (
     <>
-      <div className="containernav">
-        <NewNavBar currentUser={currentUser} logoutHandler={logoutHandler} />
-      </div>
+        <NewNavBar user={user} currentUser={currentUser} logoutHandler={logoutHandler} />
       <Routes>
         <Route path="/authPage" element={<Auth signUpHandler={signUpHandler} />} />
         <Route path="/loginPage" element={<SiginPage signInHandler={signInHandler} />} />
