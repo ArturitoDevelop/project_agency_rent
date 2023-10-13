@@ -15,10 +15,10 @@ export default function EditPage({ myPostId, changeHandler, allCategory, user })
   };
 
   return (
-    <>
-      {user?.isAdmin === true && (
-        <Form type="submit" onSubmit={updateHandler}>
-          <Row className="mb-3">
+    user?.isAdmin === true && (
+      <div className="containerform">
+        <Form className="formedit" type="submit" onSubmit={updateHandler}>
+          <Row className="mb-3 selectcontainer">
             <Form.Select
               className="input_style"
               name="cat_id"
@@ -77,7 +77,7 @@ export default function EditPage({ myPostId, changeHandler, allCategory, user })
             ok
           </button>
         </Form>
-      )}
-    </>
+      </div>
+    )
   );
 }
