@@ -18,7 +18,7 @@ export default function OneCard({
   };
 
   return (
-    <Card className="cardone" style={{ width: '18rem' }}>
+    <Card className="cardone"  style={{ width: '18rem', boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)' }}>
       <Carousel activeIndex={index} onSelect={handleSelect}>
         {post.Pictures?.map((picture) => (
           <Carousel.Item key={picture.id}>
